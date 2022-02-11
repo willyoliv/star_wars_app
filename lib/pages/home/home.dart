@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttermoji/fluttermojiCircleAvatar.dart';
 import 'package:provider/provider.dart';
 import 'package:star_wars_app/controllers/controller.dart';
+import 'package:star_wars_app/db/app_database.dart';
 import 'package:star_wars_app/shared/widgets/TabPage/tab_page.dart';
+import 'package:star_wars_app/shared/widgets/lista_favoritos/lista_favoritos.dart';
 import 'package:star_wars_app/shared/widgets/lista_filmes/lista_filmes.dart';
 import 'package:star_wars_app/shared/widgets/lista_personagens/lista_personagens.dart';
 import 'package:star_wars_app/utils/enum_states.dart';
@@ -56,7 +59,7 @@ class _HomeState extends State<Home> {
           children: [
             ListaFilmes(lista: _controllerApp.filmes),
             ListaPersonagens(lista: _controllerApp.personagens),
-            ListaFilmes(lista: _controllerApp.filmes),
+            ListaFavoritos(),
           ],
         );
       default:
@@ -75,6 +78,7 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     _pageController.dispose();
+    AppDatabase.instance.close();
     super.dispose();
   }
 
@@ -95,10 +99,15 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset("assets/star-wars.png", color: Colors.white),
-                  const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                  )
+                  GestureDetector(
+                    child: FluttermojiCircleAvatar(
+                      backgroundColor: const Color(0xFFFFE919),
+                      radius: 30,
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/edit_avatar");
+                    },
+                  ),
                 ],
               ),
             ),

@@ -3,7 +3,12 @@ import 'package:star_wars_app/models/filme.dart';
 
 class CardFilme extends StatefulWidget {
   final Filme filme;
-  const CardFilme({Key? key, required this.filme}) : super(key: key);
+  final Function adicionarOuRemoverFavoritos;
+  const CardFilme({
+    Key? key,
+    required this.filme,
+    required this.adicionarOuRemoverFavoritos,
+  }) : super(key: key);
 
   @override
   State<CardFilme> createState() => _CardFilmeState();
@@ -24,12 +29,13 @@ class _CardFilmeState extends State<CardFilme> {
         children: [
           Text(
             widget.filme.titulo,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           GestureDetector(
             onTap: () {
               setState(() {
                 widget.filme.isFavorito = !widget.filme.isFavorito;
+                widget.adicionarOuRemoverFavoritos(widget.filme.titulo);
               });
             },
             child: Image.asset(

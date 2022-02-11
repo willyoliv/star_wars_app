@@ -50,22 +50,5 @@ class TabPage extends StatelessWidget {
         alterarPagina(numeroPagina);
       },
     );
-    /* return ChoiceChip(
-      label: Container(
-        alignment: Alignment.center,
-        width: 85,
-        child: Text(texto),
-      ),
-      selected: numeroPagina == paginaSelecionada,
-      onSelected: (avlue) {
-        alterarPagina(numeroPagina);
-      },
-      selectedColor: Colors.amber,
-      backgroundColor: Colors.grey[50],
-      labelStyle: numeroPagina == paginaSelecionada
-          ? const TextStyle(color: Colors.white)
-          : const TextStyle(color: Colors.black),
-      elevation: 0,
-    ); */
   }
 }

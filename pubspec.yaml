@@ -38,6 +38,8 @@ dependencies:
   # Minhas dependências
   dio: ^4.0.4
   provider: ^6.0.2
+  fluttermoji: ^0.2.3
+  sqflite: ^2.0.2
 
 dev_dependencies:
   flutter_test:

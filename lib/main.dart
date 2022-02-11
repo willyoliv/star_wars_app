@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:star_wars_app/controllers/controller.dart';
 import 'package:star_wars_app/pages/home/home.dart';
 
+import 'pages/edit_avatar/edit_avatar.dart';
+
 void main() {
   runApp(
     MultiProvider(
@@ -23,12 +25,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Star Wars App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
+      themeMode: ThemeMode.dark,
       initialRoute: "/",
       routes: {
-        "/": (context) => Home(),
+        "/": (context) => const Home(),
+        "/edit_avatar": (context) => const EditAvatar(),
       },
     );
   }
